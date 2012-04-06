@@ -9,7 +9,7 @@ Supported platforms: **Mac OS X** | **Windows** | **Linux**
 
 #### Hello world
 
-How about a native UI window directly from Node?
+Ever wanted to create native apps directly from Node? Here's a simple example illustrating how to create a native window via `QWidget()` and draw via `QPainter()`:
 
 ![Screenshot](https://github.com/arturadib/node-qt/raw/master/examples/helloworld.png)
 
