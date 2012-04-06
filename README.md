@@ -9,6 +9,10 @@ Supported platforms: **Mac OS X** | **Windows** | **Linux**
 
 #### Hello world
 
+How about a native UI window directly from Node?
+
+![Screenshot](https://github.com/arturadib/node-qt/raw/master/examples/helloworld.png)
+
 ```javascript
 var qt = require('node-qt'),
     app = new qt.QApplication,
@@ -71,7 +75,7 @@ See the [examples/](https://github.com/arturadib/node-qt/tree/master/examples) d
 
 # Requirements
 
-Node-Qt was designed to build seamlessly on a standard development box. The necessary platform-dependent Qt binaries are bundled with the module (due to heterogeneous dependencies, Linux is an exception).
+Node-Qt was designed to build seamlessly with minimal dependencies on most platforms. The necessary platform-dependent Qt binaries are bundled with the module (due to heterogeneous dependencies, Linux is an exception).
 
 + **Mac:** Python, Make, and GCC.
 + **Windows:** Python and MSVC++ (either [free](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express) or commercial).
