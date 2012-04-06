@@ -1,0 +1,7 @@
+QMAKE_PRL_BUILD_DIR = /private/tmp/homebrew-qt-4.8.0-1B9g/qt-everywhere-opensource-src-4.8.0/./src/gui
+QMAKE_PRO_INPUT = gui.pro
+QMAKE_PRL_TARGET = QtGui_debug
+QMAKE_PRL_DEFINES = QT_SHARED
+QMAKE_PRL_CONFIG = lex yacc warn_on debug uic resources sdk rez debug DebugBuild Debug build_pass qt warn_on app_bundle incremental global_init_link_order lib_version_first plugin_no_soname link_prl def_files_disabled exceptions no_mocdepend stl qt_framework x86_64 shared dll largefile stl precompile_header mmx 3dnow sse sse2 sse3 ssse3 sse4_1 sse4_2 x86_64 absolute_library_soname dylib create_prl link_prl depend_includepath QTDIR_build use_libmysqlclient_r debug DebugBuild Debug build_pass qt_install_headers qt warn_on depend_includepath qmake_cache target_qt debug_and_release hide_symbols lib_bundle qt_no_framework_direct_includes qt_framework explicitlib create_libtool create_pc explicitlib debug DebugBuild Debug build_pass objective_c x86_64 no_autoqmake moc thread shared dll
+QMAKE_PRL_VERSION = 4.8.0
+QMAKE_PRL_LIBS = -L/usr/X11/lib -L/private/tmp/homebrew-qt-4.8.0-1B9g/qt-everywhere-opensource-src-4.8.0/lib -F/private/tmp/homebrew-qt-4.8.0-1B9g/qt-everywhere-opensource-src-4.8.0/lib -framework QtCore -L/usr/X11/lib -L/private/tmp/homebrew-qt-4.8.0-1B9g/qt-everywhere-opensource-src-4.8.0/lib 

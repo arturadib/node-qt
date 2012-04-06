@@ -1,0 +1,22 @@
+#ifndef QT_QTTEST_MODULE_H
+#define QT_QTTEST_MODULE_H
+#include <QtCore/QtCore>
+#include "qbenchmark.h"
+#include "qbenchmarkmetric.h"
+#include "qsignalspy.h"
+#include "qtest.h"
+#include "qtestassert.h"
+#include "qtestbasicstreamer.h"
+#include "qtestcase.h"
+#include "qtestcoreelement.h"
+#include "qtestcorelist.h"
+#include "qtestdata.h"
+#include "qtestelement.h"
+#include "qtestelementattribute.h"
+#include "qtesteventloop.h"
+#include "qtestfilelogger.h"
+#include "qtestlightxmlstreamer.h"
+#include "qtestsystem.h"
+#include "qtestxmlstreamer.h"
+#include "qtestxunitstreamer.h"
+#endif

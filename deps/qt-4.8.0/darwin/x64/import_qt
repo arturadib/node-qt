@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#
+# Only repo maintainers should need to use this
+# Copies all necessary Qt frameworks into the current dir, and updates
+# the LD paths
+#
+
+# /Cellar assumes we've installed Qt via homebrew
+QT_PATH=/usr/local/Cellar/qt/4.8.0
+
+echo Removing existing copy
+rm -rf include lib
+mkdir include lib
+
+echo Importing copy from ${QT_PATH}
+cp -R ${QT_PATH}/lib/QtCore.framework \
+      ${QT_PATH}/lib/QtGui.framework \
+      ${QT_PATH}/lib/QtTest.framework \
+      lib
+
+# Avoid symbolic links by moving Version files around (npm doesn't like symlinks)
+find . -type l | xargs rm -f
+
+# Replace header symlinks with hardcopies
+mv -f lib/QtCore.framework/Versions/4/Headers include/QtCore
+mv -f lib/QtGui.framework/Versions/4/Headers include/QtGui
+mv -f lib/QtTest.framework/Versions/4/Headers include/QtTest
+
+# Replace lib symlinks with hardcopies
+mv -f lib/QtCore.framework/Versions/4/* lib/QtCore.framework
+mv -f lib/QtGui.framework/Versions/4/* lib/QtGui.framework
+mv -f lib/QtTest.framework/Versions/4/* lib/QtTest.framework
+
+chmod -R u+rw *
+
+# Update ids
+install_name_tool -id lib/QtCore.framework/QtCore lib/QtCore.framework/QtCore
+install_name_tool -id lib/QtGui.framework/QtGui lib/QtGui.framework/QtGui
+install_name_tool -id lib/QtTest.framework/QtTest lib/QtTest.framework/QtTest
+
+# Update internal refs (from old paths to new)
+install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/QtCore lib/QtGui.framework/QtGui
+install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/QtCore lib/QtTest.framework/QtTest
+
+# Break unncessary references to old path to avoid Qt's weird fallback
+# (find command only matches binary files like QtCore, not QtCore.prl)
+find lib -type f -name 'Qt*' ! -name '*.*' | xargs sed -i.bak -E 's/Cellar/______/g' 
+find lib -name '*.bak' | xargs rm -f

@@ -1,0 +1,480 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'qcolordialog.cpp'
+**
+** Created: Thu 8. Dec 07:45:32 2011
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'qcolordialog.cpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.0. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_QWellArray[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       2,   19, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      20,   12,   11,   11, 0x05,
+
+ // properties: name, type, flags
+      42,   38, 0x02095001,
+      57,   38, 0x02095001,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QWellArray[] = {
+    "QWellArray\0\0row,col\0selected(int,int)\0"
+    "int\0selectedColumn\0selectedRow\0"
+};
+
+void QWellArray::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QWellArray *_t = static_cast<QWellArray *>(_o);
+        switch (_id) {
+        case 0: _t->selected((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QWellArray::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QWellArray::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_QWellArray,
+      qt_meta_data_QWellArray, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QWellArray::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QWellArray::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QWellArray::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QWellArray))
+        return static_cast<void*>(const_cast< QWellArray*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int QWellArray::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+#ifndef QT_NO_PROPERTIES
+      else if (_c == QMetaObject::ReadProperty) {
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: *reinterpret_cast< int*>(_v) = selectedColumn(); break;
+        case 1: *reinterpret_cast< int*>(_v) = selectedRow(); break;
+        }
+        _id -= 2;
+    } else if (_c == QMetaObject::WriteProperty) {
+        _id -= 2;
+    } else if (_c == QMetaObject::ResetProperty) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyDesignable) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyScriptable) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyStored) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyEditable) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyUser) {
+        _id -= 2;
+    }
+#endif // QT_NO_PROPERTIES
+    return _id;
+}
+
+// SIGNAL 0
+void QWellArray::selected(int _t1, int _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_QColorPicker[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      18,   14,   13,   13, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      34,   14,   13,   13, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QColorPicker[] = {
+    "QColorPicker\0\0h,s\0newCol(int,int)\0"
+    "setCol(int,int)\0"
+};
+
+void QColorPicker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QColorPicker *_t = static_cast<QColorPicker *>(_o);
+        switch (_id) {
+        case 0: _t->newCol((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 1: _t->setCol((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QColorPicker::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QColorPicker::staticMetaObject = {
+    { &QFrame::staticMetaObject, qt_meta_stringdata_QColorPicker,
+      qt_meta_data_QColorPicker, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QColorPicker::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QColorPicker::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QColorPicker::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QColorPicker))
+        return static_cast<void*>(const_cast< QColorPicker*>(this));
+    return QFrame::qt_metacast(_clname);
+}
+
+int QColorPicker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QFrame::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void QColorPicker::newCol(int _t1, int _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_QColorLuminancePicker[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       3,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      29,   23,   22,   22, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      49,   23,   22,   22, 0x0a,
+      73,   69,   22,   22, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QColorLuminancePicker[] = {
+    "QColorLuminancePicker\0\0h,s,v\0"
+    "newHsv(int,int,int)\0setCol(int,int,int)\0"
+    "h,s\0setCol(int,int)\0"
+};
+
+void QColorLuminancePicker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QColorLuminancePicker *_t = static_cast<QColorLuminancePicker *>(_o);
+        switch (_id) {
+        case 0: _t->newHsv((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 1: _t->setCol((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 2: _t->setCol((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QColorLuminancePicker::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QColorLuminancePicker::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_QColorLuminancePicker,
+      qt_meta_data_QColorLuminancePicker, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QColorLuminancePicker::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QColorLuminancePicker::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QColorLuminancePicker::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QColorLuminancePicker))
+        return static_cast<void*>(const_cast< QColorLuminancePicker*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int QColorLuminancePicker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void QColorLuminancePicker::newHsv(int _t1, int _t2, int _t3)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_QColorShower[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       5,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      18,   14,   13,   13, 0x05,
+      37,   31,   13,   13, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      65,   14,   13,   13, 0x0a,
+      78,   13,   13,   13, 0x08,
+      86,   13,   13,   13, 0x08,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QColorShower[] = {
+    "QColorShower\0\0rgb\0newCol(QRgb)\0color\0"
+    "currentColorChanged(QColor)\0setRgb(QRgb)\0"
+    "rgbEd()\0hsvEd()\0"
+};
+
+void QColorShower::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QColorShower *_t = static_cast<QColorShower *>(_o);
+        switch (_id) {
+        case 0: _t->newCol((*reinterpret_cast< QRgb(*)>(_a[1]))); break;
+        case 1: _t->currentColorChanged((*reinterpret_cast< const QColor(*)>(_a[1]))); break;
+        case 2: _t->setRgb((*reinterpret_cast< QRgb(*)>(_a[1]))); break;
+        case 3: _t->rgbEd(); break;
+        case 4: _t->hsvEd(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QColorShower::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QColorShower::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_QColorShower,
+      qt_meta_data_QColorShower, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QColorShower::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QColorShower::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QColorShower::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QColorShower))
+        return static_cast<void*>(const_cast< QColorShower*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int QColorShower::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void QColorShower::newCol(QRgb _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void QColorShower::currentColorChanged(const QColor & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+static const uint qt_meta_data_QColorShowLabel[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      17,   16,   16,   16, 0x05,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QColorShowLabel[] = {
+    "QColorShowLabel\0\0colorDropped(QRgb)\0"
+};
+
+void QColorShowLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QColorShowLabel *_t = static_cast<QColorShowLabel *>(_o);
+        switch (_id) {
+        case 0: _t->colorDropped((*reinterpret_cast< QRgb(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QColorShowLabel::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QColorShowLabel::staticMetaObject = {
+    { &QFrame::staticMetaObject, qt_meta_stringdata_QColorShowLabel,
+      qt_meta_data_QColorShowLabel, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QColorShowLabel::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QColorShowLabel::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QColorShowLabel::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QColorShowLabel))
+        return static_cast<void*>(const_cast< QColorShowLabel*>(this));
+    return QFrame::qt_metacast(_clname);
+}
+
+int QColorShowLabel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QFrame::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void QColorShowLabel::colorDropped(QRgb _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+QT_END_MOC_NAMESPACE
