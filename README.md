@@ -83,7 +83,7 @@ For all platforms: Node >= **0.6.14**
 
 + **Mac:** Python, Make, and GCC.
 + **Windows:** Python and MSVC++ (either [free](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express) or commercial).
-+ **Linux:** Python, Make, GCC, and Qt 4.7+. To install Qt on Ubuntu: `$ sudo apt-get install pkg-config qt-sdk`.
++ **Linux:** Python, Make, GCC, pkg-config, and Qt 4.7+. To install pkg-config and Qt on Ubuntu: `$ sudo apt-get install pkg-config qt-sdk`.
 
 
 
