@@ -184,6 +184,8 @@ void QWidgetWrap::Initialize(Handle<Object> target) {
       FunctionTemplate::New(Resize)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("show"),
       FunctionTemplate::New(Show)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("close"),
+      FunctionTemplate::New(Close)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("size"),
       FunctionTemplate::New(Size)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("width"),
