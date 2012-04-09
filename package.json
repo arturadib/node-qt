@@ -9,8 +9,10 @@
 , "homepage": "http://github.com/arturadib/node-qt"
 , "main": "./lib/qt.js"
 , "keywords": ["qt", "gui", "ui", "graphics", "audio", "webkit"]
+, "engines" : { 
+  "node" : ">=0.6.14" 
+}
 , "dependencies": {
-    "shelljs": "0.0.5pre4",
-    "node-gyp": "0.3.11"
+    "shelljs": "0.0.5pre4"
   }
 }

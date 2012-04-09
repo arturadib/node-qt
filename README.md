@@ -79,11 +79,11 @@ See the [examples/](https://github.com/arturadib/node-qt/tree/master/examples) d
 
 Node-Qt was designed to build seamlessly with minimal dependencies on most platforms. The necessary platform-dependent Qt binaries are bundled with the module (due to heterogeneous dependencies, Linux is an exception).
 
+For all platforms: Node >= **0.6.14**
+
 + **Mac:** Python, Make, and GCC.
 + **Windows:** Python and MSVC++ (either [free](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express) or commercial).
 + **Linux:** Python, Make, GCC, and Qt 4.7+. To install Qt on Ubuntu: `$ sudo apt-get install pkg-config qt-sdk`.
-
-Node-Qt has been tested with Node 0.6.x.
 
 
 
