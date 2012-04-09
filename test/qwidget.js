@@ -53,6 +53,8 @@ var app = new qt.QApplication();
   assert.equal(widget.hasMouseTracking(), false);
   widget.setMouseTracking(true);
   assert.equal(widget.hasMouseTracking(), true);
+
+  widget.close();
 }
 
 {
@@ -78,6 +80,8 @@ var app = new qt.QApplication();
   widget2.move(12, 34);
   assert.equal(widget2.x(), 12);
   assert.equal(widget2.y(), 34);
+  
+  widget.close();
 }
 
 // Events
