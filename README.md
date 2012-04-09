@@ -75,7 +75,7 @@ See the [examples/](https://github.com/arturadib/node-qt/tree/master/examples) d
 
 
 
-# Requirements
+# Build requirements
 
 Node-Qt was designed to build seamlessly with minimal dependencies on most platforms. The necessary platform-dependent Qt binaries are bundled with the module (due to heterogeneous dependencies, Linux is an exception).
 
