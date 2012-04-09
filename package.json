@@ -1,18 +1,31 @@
-{ "name": "node-qt"
-, "version": "0.0.1"
-, "author": "Artur Adib <arturadib@gmail.com>"
-, "description": "Qt bindings for Node.js"
-, "repository": {
+{
+  "name": "node-qt",
+  "version": "0.0.2",
+  "author": "Artur Adib <arturadib@gmail.com>",
+  "description": "Qt bindings for Node.js",
+  "repository": {
     "type": "git",
     "url": "git://github.com/arturadib/node-qt.git"
-  }
-, "homepage": "http://github.com/arturadib/node-qt"
-, "main": "./lib/qt.js"
-, "keywords": ["qt", "gui", "ui", "graphics", "audio", "webkit"]
-, "engines" : { 
-  "node" : ">=0.6.14" 
-}
-, "dependencies": {
+  },
+  "homepage": "http://github.com/arturadib/node-qt",
+  "main": "./lib/qt.js",
+  "keywords": [
+    "qt",
+    "gui",
+    "ui",
+    "graphics",
+    "audio",
+    "webkit"
+  ],
+  "engines": {
+    "node": ">=0.6.14"
+  },
+  "dependencies": {
     "shelljs": "0.0.5pre4"
-  }
+  },
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
 }
