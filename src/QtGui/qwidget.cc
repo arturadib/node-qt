@@ -32,6 +32,9 @@
 #include "../qt_v8.h"
 #include "../QtCore/qsize.h"
 #include "qwidget.h"
+#include "qevent.h"
+#include "qcloseevent.h"
+#include "qresizeevent.h"
 #include "qmouseevent.h"
 #include "qkeyevent.h"
 
@@ -52,6 +55,10 @@ QWidgetImpl::QWidgetImpl(QWidgetImpl* parent) : QWidget(parent) {
   mouseMoveCallback_ = Persistent<Boolean>::New(Boolean::New(false));
   keyPressCallback_ = Persistent<Boolean>::New(Boolean::New(false));
   keyReleaseCallback_ = Persistent<Boolean>::New(Boolean::New(false));
+  enterCallback_ = Persistent<Boolean>::New(Boolean::New(false));
+  leaveCallback_ = Persistent<Boolean>::New(Boolean::New(false));
+  closeCallback_ = Persistent<Boolean>::New(Boolean::New(false));
+  resizeCallback_ = Persistent<Boolean>::New(Boolean::New(false));
 }
 
 QWidgetImpl::~QWidgetImpl() {
@@ -61,6 +68,10 @@ QWidgetImpl::~QWidgetImpl() {
   mouseMoveCallback_.Dispose();
   keyPressCallback_.Dispose();
   keyReleaseCallback_.Dispose();
+  enterCallback_.Dispose();
+  leaveCallback_.Dispose();
+  closeCallback_.Dispose();
+  resizeCallback_.Dispose();
 }
 
 void QWidgetImpl::paintEvent(QPaintEvent* e) {
@@ -161,6 +172,76 @@ void QWidgetImpl::keyReleaseEvent(QKeyEvent* e) {
   cb->Call(Context::GetCurrent()->Global(), argc, argv);
 }
 
+
+void QWidgetImpl::enterEvent(QEvent* e) {
+  e->ignore(); // ensures event bubbles up
+
+  HandleScope scope;
+  
+  if (!enterCallback_->IsFunction())
+    return;
+
+  const unsigned argc = 1;
+  Handle<Value> argv[argc] = {
+    QEventWrap::NewInstance(*e)
+  };
+  Handle<Function> cb = Persistent<Function>::Cast(enterCallback_);
+    
+  cb->Call(Context::GetCurrent()->Global(), argc, argv);
+}
+
+void QWidgetImpl::leaveEvent(QEvent* e) {
+  e->ignore(); // ensures event bubbles up
+
+  HandleScope scope;
+  
+  if (!leaveCallback_->IsFunction())
+    return;
+
+  const unsigned argc = 1;
+  Handle<Value> argv[argc] = {
+    QEventWrap::NewInstance(*e)
+  };
+  Handle<Function> cb = Persistent<Function>::Cast(leaveCallback_);
+    
+  cb->Call(Context::GetCurrent()->Global(), argc, argv);
+}
+
+void QWidgetImpl::closeEvent(QCloseEvent* e) {
+  e->accept(); // accept close event by default
+
+  HandleScope scope;
+  
+  if (!closeCallback_->IsFunction())
+    return;
+
+  const unsigned argc = 1;
+  Handle<Value> argv[argc] = {
+    QCloseEventWrap::NewInstance(*e)
+  };
+  Handle<Function> cb = Persistent<Function>::Cast(closeCallback_);
+    
+  cb->Call(Context::GetCurrent()->Global(), argc, argv);
+}
+
+void QWidgetImpl::resizeEvent(QResizeEvent* e) {
+  e->ignore(); // accept close event by default
+
+  HandleScope scope;
+  
+  if (!resizeCallback_->IsFunction())
+    return;
+
+  const unsigned argc = 1;
+  Handle<Value> argv[argc] = {
+    QResizeEventWrap::NewInstance(*e)
+  };
+  Handle<Function> cb = Persistent<Function>::Cast(resizeCallback_);
+    
+  cb->Call(Context::GetCurrent()->Global(), argc, argv);
+}
+
+
 //
 // QWidgetWrap()
 //
@@ -226,6 +307,14 @@ void QWidgetWrap::Initialize(Handle<Object> target) {
       FunctionTemplate::New(KeyPressEvent)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("keyReleaseEvent"),
       FunctionTemplate::New(KeyReleaseEvent)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("enterEvent"),
+      FunctionTemplate::New(EnterEvent)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("leaveEvent"),
+      FunctionTemplate::New(LeaveEvent)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("closeEvent"),
+      FunctionTemplate::New(CloseEvent)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("resizeEvent"),
+      FunctionTemplate::New(ResizeEvent)->GetFunction());
 
   constructor = Persistent<Function>::New(tpl->GetFunction());
   target->Set(String::NewSymbol("QWidget"), constructor);
@@ -442,6 +531,68 @@ Handle<Value> QWidgetWrap::KeyReleaseEvent(const Arguments& args) {
 
   return scope.Close(Undefined());
 }
+
+//
+// EnterEvent()
+// Binds a callback to Qt's event
+//
+Handle<Value> QWidgetWrap::EnterEvent(const Arguments& args) {
+  HandleScope scope;
+
+  QWidgetWrap* w = node::ObjectWrap::Unwrap<QWidgetWrap>(args.This());
+  QWidgetImpl* q = w->GetWrapped();
+
+  q->enterCallback_.Dispose();
+  q->enterCallback_ = Persistent<Function>::New(
+      Local<Function>::Cast(args[0]));
+
+  return scope.Close(Undefined());
+}
+
+//
+// LeaveEvent()
+// Binds a callback to Qt's event
+//
+Handle<Value> QWidgetWrap::LeaveEvent(const Arguments& args) {
+  HandleScope scope;
+
+  QWidgetWrap* w = node::ObjectWrap::Unwrap<QWidgetWrap>(args.This());
+  QWidgetImpl* q = w->GetWrapped();
+
+  q->leaveCallback_.Dispose();
+  q->leaveCallback_ = Persistent<Function>::New(
+      Local<Function>::Cast(args[0]));
+
+  return scope.Close(Undefined());
+}
+
+Handle<Value> QWidgetWrap::CloseEvent(const Arguments& args) {
+  HandleScope scope;
+
+  QWidgetWrap* w = node::ObjectWrap::Unwrap<QWidgetWrap>(args.This());
+  QWidgetImpl* q = w->GetWrapped();
+
+  q->closeCallback_.Dispose();
+  q->closeCallback_ = Persistent<Function>::New(
+      Local<Function>::Cast(args[0]));
+
+  return scope.Close(Undefined());
+}
+
+
+Handle<Value> QWidgetWrap::ResizeEvent(const Arguments& args) {
+  HandleScope scope;
+
+  QWidgetWrap* w = node::ObjectWrap::Unwrap<QWidgetWrap>(args.This());
+  QWidgetImpl* q = w->GetWrapped();
+
+  q->resizeCallback_.Dispose();
+  q->resizeCallback_ = Persistent<Function>::New(
+      Local<Function>::Cast(args[0]));
+
+  return scope.Close(Undefined());
+}
+
 
 Handle<Value> QWidgetWrap::Update(const Arguments& args) {
   HandleScope scope;
