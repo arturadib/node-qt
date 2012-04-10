@@ -31,7 +31,7 @@ var qt = require('..');
 
 var app = new qt.QApplication();
 
-var sound = new qt.QSound('conga1.wav');
+var sound = new qt.QSound(__dirname + '/conga1.wav');
 sound.setLoops(3);
 sound.play();
 
