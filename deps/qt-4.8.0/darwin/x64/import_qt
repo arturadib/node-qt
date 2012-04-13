@@ -43,7 +43,11 @@ install_name_tool -id lib/QtTest.framework/QtTest lib/QtTest.framework/QtTest
 install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/QtCore lib/QtGui.framework/QtGui
 install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/QtCore lib/QtTest.framework/QtTest
 
+# Fix libpng (we need libpng as per: https://github.com/arturadib/node-qt/issues/5)
+install_name_tool -change /usr/X11/lib/libpng15.15.dylib libpng15.15.dylib lib/QtGui.framework/QtGui
+
 # Break unncessary references to old path to avoid Qt's weird fallback
 # (find command only matches binary files like QtCore, not QtCore.prl)
 find lib -type f -name 'Qt*' ! -name '*.*' | xargs sed -i.bak -E 's/Cellar/______/g' 
 find lib -name '*.bak' | xargs rm -f
+
