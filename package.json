@@ -24,7 +24,6 @@
     "shelljs": "0.0.5pre4"
   },
   "scripts": {
-    "install": "node-gyp rebuild"
   },
   "devDependencies": {},
   "optionalDependencies": {}
