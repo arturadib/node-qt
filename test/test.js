@@ -4,7 +4,7 @@ var fs = require('fs'),
 var testDir = __dirname+'/img-test/',
     refDir = __dirname+'/img-ref/';
 
-if (!path.existsSync(testDir)) {
+if (!fs.existsSync(testDir)) {
   console.log('! regression warning: img-test/ dir does not exist. creating it...')
   fs.mkdirSync(testDir);
 }
@@ -15,7 +15,7 @@ exports.regression = function(name, pixmap, callback) {
   pixmap.save(testDir+name+'.png');
 
   // Can't compare if refs don't exist
-  if (!path.existsSync(refDir+name+'.png')) {
+  if (!fs.existsSync(refDir+name+'.png')) {
     console.log('! regression warning: could not find reference file for test:', name)
     return;
   }

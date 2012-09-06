@@ -45,10 +45,10 @@ var app = new qt.QApplication();
 // save()
 {
   var pixmap = new qt.QPixmap(10, 10);
-  if (path.existsSync('./__pixmap.png'))
+  if (fs.existsSync('./__pixmap.png'))
     fs.unlinkSync('__pixmap.png');
   pixmap.save('__pixmap.png');
-  assert.equal(path.existsSync('./__pixmap.png'), true, '.save() works');
+  assert.equal(fs.existsSync('./__pixmap.png'), true, '.save() works');
   fs.unlinkSync('./__pixmap.png');
 }
 
