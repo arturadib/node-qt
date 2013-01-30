@@ -16,27 +16,22 @@ Ever wanted to create native apps directly from Node? Here's a simple example il
 ![Screenshot](https://github.com/arturadib/node-qt/raw/master/examples/helloworld.png)
 
 ```javascript
-var qt = require('node-qt'),
-    app = new qt.QApplication,
-    window = new qt.QWidget;
-
-// Prevent objects from being GC'd
-global.app = app;
-global.window = window;
+var qt = require("qt");
+var app = new qt.QApplication();
+var window = new qt.QWidget();
 
 // Quirk: the virtual method paintEvent() is mapped into a callback setter
 window.paintEvent(function() {
-  var p = new qt.QPainter();
-  p.begin(window);
-  p.drawText(20, 30, 'hello node, hello qt');
-  p.end();
+    var p = new qt.QPainter();
+    p.begin(window);
+    p.drawText(20, 30, 'hello node, hello qt');
+    p.end();
 });
 
 window.resize(300, 150);
 window.show();
 
-// Join Node's event loop
-setInterval(app.processEvents, 0);
+app.exec();
 ```
 
 
