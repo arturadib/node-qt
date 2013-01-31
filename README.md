@@ -16,7 +16,7 @@ Ever wanted to create native apps directly from Node? Here's a simple example il
 ![Screenshot](https://github.com/arturadib/node-qt/raw/master/examples/helloworld.png)
 
 ```javascript
-var qt = require("qt");
+var qt = require("node-qt");
 var app = new qt.QApplication();
 var window = new qt.QWidget();
 
