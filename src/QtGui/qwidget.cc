@@ -212,7 +212,9 @@ void QWidgetWrap::Initialize(Handle<Object> target) {
       FunctionTemplate::New(X)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("y"),
       FunctionTemplate::New(Y)->GetFunction());
-
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("showMaximized"),
+      FunctionTemplate::New(Show)->GetFunction());
+      
   // Events
   tpl->PrototypeTemplate()->Set(String::NewSymbol("paintEvent"),
       FunctionTemplate::New(PaintEvent)->GetFunction());
@@ -514,4 +516,15 @@ Handle<Value> QWidgetWrap::Y(const Arguments& args) {
   QWidgetImpl* q = w->GetWrapped();
 
   return scope.Close(Integer::New(q->y()));
+}
+
+Handle<Value> QWidgetWrap::showMaximized(const Arguments& args) {
+  HandleScope scope;
+
+  QWidgetWrap* w = node::ObjectWrap::Unwrap<QWidgetWrap>(args.This());
+  QWidgetImpl* q = w->GetWrapped();
+
+  q->showMaximized();
+
+  return scope.Close(Undefined());
 }
