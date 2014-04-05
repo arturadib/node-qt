@@ -40,6 +40,7 @@
 #include "qpainterpath.h"
 #include "qfont.h"
 #include "qmatrix.h"
+#include "../QtCore/qpointf.h"
 
 using namespace v8;
 
@@ -85,6 +86,8 @@ void QPainterWrap::Initialize(Handle<Object> target) {
       FunctionTemplate::New(DrawImage)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("strokePath"),
       FunctionTemplate::New(StrokePath)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("drawEllipse"),
+      FunctionTemplate::New(DrawEllipse)->GetFunction());
 
   constructor = Persistent<Function>::New(tpl->GetFunction());
   target->Set(String::NewSymbol("QPainter"), constructor);
@@ -442,6 +445,33 @@ Handle<Value> QPainterWrap::StrokePath(const Arguments& args) {
   QPen* pen = pen_wrap->GetWrapped();
 
   q->strokePath(*path, *pen);
+
+  return scope.Close(Undefined());
+}
+
+// void QPainter::drawEllipse ( const QPoint & center, int rx, int ry )
+Handle<Value> QPainterWrap::DrawEllipse(const Arguments& args) {
+  HandleScope scope;
+
+  QPainterWrap* w = ObjectWrap::Unwrap<QPainterWrap>(args.This());
+  QPainter* q = w->GetWrapped();
+
+  QString arg0_constructor;
+  if (args[0]->IsObject()) {
+    arg0_constructor = 
+        qt_v8::ToQString(args[0]->ToObject()->GetConstructorName());
+  }
+  
+  if (arg0_constructor != "QPointF")
+    return ThrowException(Exception::TypeError(
+      String::New("QPainterPathWrap::MoveTo: argument not recognized")));
+  
+  QPointFWrap* pointf_wrap = ObjectWrap::Unwrap<QPointFWrap>(args[0]->ToObject());
+  QPointF* pointf = pointf_wrap->GetWrapped();
+  
+  // args[1]->IntegerValue(), args[2]->IntegerValue()
+
+  q->drawEllipse( *pointf, args[1]->IntegerValue(), args[2]->IntegerValue() );
 
   return scope.Close(Undefined());
 }
