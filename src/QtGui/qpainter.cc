@@ -88,6 +88,8 @@ void QPainterWrap::Initialize(Handle<Object> target) {
       FunctionTemplate::New(StrokePath)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("drawEllipse"),
       FunctionTemplate::New(DrawEllipse)->GetFunction());
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("setBrush"),
+      FunctionTemplate::New(SetBrush)->GetFunction());
 
   constructor = Persistent<Function>::New(tpl->GetFunction());
   target->Set(String::NewSymbol("QPainter"), constructor);
@@ -464,14 +466,37 @@ Handle<Value> QPainterWrap::DrawEllipse(const Arguments& args) {
   
   if (arg0_constructor != "QPointF")
     return ThrowException(Exception::TypeError(
-      String::New("QPainterPathWrap::MoveTo: argument not recognized")));
+      String::New("QPainterPathWrap::DrawEllipse: argument not recognized")));
   
   QPointFWrap* pointf_wrap = ObjectWrap::Unwrap<QPointFWrap>(args[0]->ToObject());
-  QPointF* pointf = pointf_wrap->GetWrapped();
-  
-  // args[1]->IntegerValue(), args[2]->IntegerValue()
+  QPointF* pointf = pointf_wrap->GetWrapped();  
 
   q->drawEllipse( *pointf, args[1]->IntegerValue(), args[2]->IntegerValue() );
 
+  return scope.Close(Undefined());
+}
+
+Handle<Value> QPainterWrap::SetBrush(const Arguments& args) {
+  HandleScope scope;
+
+  QPainterWrap* w = ObjectWrap::Unwrap<QPainterWrap>(args.This());
+  QPainter* q = w->GetWrapped();
+
+  QString arg0_constructor;
+  if (args[0]->IsObject()) {
+    arg0_constructor = 
+        qt_v8::ToQString(args[0]->ToObject()->GetConstructorName());
+  }
+  
+  if (arg0_constructor != "QBrush")
+    return ThrowException(Exception::TypeError(
+      String::New("QPainterPathWrap::SetBrush: argument not recognized")));
+      
+  // Unwrap QBrush
+  QBrushWrap* brush_wrap = ObjectWrap::Unwrap<QBrushWrap>(args[0]->ToObject());
+  QBrush* brush = brush_wrap->GetWrapped();
+  
+  q->setBrush( *brush );
+  
   return scope.Close(Undefined());
 }
