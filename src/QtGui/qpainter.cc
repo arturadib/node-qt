@@ -90,7 +90,9 @@ void QPainterWrap::Initialize(Handle<Object> target) {
       FunctionTemplate::New(DrawEllipse)->GetFunction());
   tpl->PrototypeTemplate()->Set(String::NewSymbol("setBrush"),
       FunctionTemplate::New(SetBrush)->GetFunction());
-
+  tpl->PrototypeTemplate()->Set(String::NewSymbol("fillPath"),
+      FunctionTemplate::New(FillPath)->GetFunction());
+      
   constructor = Persistent<Function>::New(tpl->GetFunction());
   target->Set(String::NewSymbol("QPainter"), constructor);
 }
@@ -474,6 +476,46 @@ Handle<Value> QPainterWrap::DrawEllipse(const Arguments& args) {
   q->drawEllipse( *pointf, args[1]->IntegerValue(), args[2]->IntegerValue() );
 
   return scope.Close(Undefined());
+}
+
+Handle<Value> QPainterWrap::FillPath(const Arguments& args) {
+  HandleScope scope;
+
+  QPainterWrap* w = ObjectWrap::Unwrap<QPainterWrap>(args.This());
+  QPainter* q = w->GetWrapped();
+
+  QString arg0_constructor;
+  if (args[0]->IsObject()) {
+    arg0_constructor = 
+        qt_v8::ToQString(args[0]->ToObject()->GetConstructorName());
+  }
+  
+  if (arg0_constructor != "QPainterPath")
+    return ThrowException(Exception::TypeError(
+      String::New("QPainterPathWrap::FillPath: argument not recognized")));
+      
+  QString arg1_constructor;
+  if (args[1]->IsObject()) {
+    arg1_constructor = 
+        qt_v8::ToQString(args[1]->ToObject()->GetConstructorName());
+  }
+  
+  if (arg1_constructor != "QBrush")
+    return ThrowException(Exception::TypeError(
+      String::New("QBrush::FillPath: argument not recognized")));
+      
+      
+  // Unwrap QPainterPath
+  QPainterPathWrap* path_wrap = ObjectWrap::Unwrap<QPainterPathWrap>(args[0]->ToObject());
+  QPainterPath* path = path_wrap->GetWrapped();    
+    
+  // Unwrap QBrush
+  QBrushWrap* brush_wrap = ObjectWrap::Unwrap<QBrushWrap>(args[1]->ToObject());
+  QBrush* brush = brush_wrap->GetWrapped();
+  
+  q->fillPath( *path, *brush );
+  
+  return scope.Close(Undefined());    
 }
 
 Handle<Value> QPainterWrap::SetBrush(const Arguments& args) {
