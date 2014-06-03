@@ -46,4 +46,6 @@ window.resize(300, 150);
 window.show();
 
 // Join Node's event loop
-setInterval(app.processEvents, 0);
+setInterval(function(){
+	app.processEvents();
+}, 0);
