@@ -59,13 +59,16 @@ class QPainterWrap : public node::ObjectWrap {
   static v8::Handle<v8::Value> SetPen(const v8::Arguments& args);
   static v8::Handle<v8::Value> SetFont(const v8::Arguments& args);
   static v8::Handle<v8::Value> SetMatrix(const v8::Arguments& args);
-
+  static v8::Handle<v8::Value> SetBrush(const v8::Arguments& args);
+  
   // Paint actions
   static v8::Handle<v8::Value> FillRect(const v8::Arguments& args);
   static v8::Handle<v8::Value> DrawText(const v8::Arguments& args);
   static v8::Handle<v8::Value> DrawPixmap(const v8::Arguments& args);
   static v8::Handle<v8::Value> DrawImage(const v8::Arguments& args);
   static v8::Handle<v8::Value> StrokePath(const v8::Arguments& args);
+  static v8::Handle<v8::Value> DrawEllipse(const v8::Arguments& args);
+  static v8::Handle<v8::Value> FillPath(const v8::Arguments& args);
 
   // Wrapped object
   QPainter* q_;

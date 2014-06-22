@@ -89,6 +89,7 @@ class QWidgetWrap : public node::ObjectWrap {
   static v8::Handle<v8::Value> Move(const v8::Arguments& args);
   static v8::Handle<v8::Value> X(const v8::Arguments& args);
   static v8::Handle<v8::Value> Y(const v8::Arguments& args);
+  static v8::Handle<v8::Value> showMaximized(const v8::Arguments& args);
 
   // QUIRK
   // Event binding. These functions bind implemented event handlers above
