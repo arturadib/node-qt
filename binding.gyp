@@ -10,6 +10,9 @@
 
         'src/QtGui/qapplication.cc',
         'src/QtGui/qwidget.cc',
+        'src/QtGui/qevent.cc',
+        'src/QtGui/qcloseevent.cc',
+        'src/QtGui/qresizeevent.cc',
         'src/QtGui/qmouseevent.cc',
         'src/QtGui/qkeyevent.cc',
         'src/QtGui/qpixmap.cc',
